@@ -1,0 +1,36 @@
+.contact {
+   display: flex;
+   flex-direction: column;
+   width: 250px;
+   justify-content: center;
+   align-items: flex-start;
+   gap: 10px;
+   border: #000 1px solid;
+   border-radius: 10px;
+   padding: 5px;
+}
+
+.icon {
+   width: 24px;
+}
+
+.text {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+}
+
+.button {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   padding: 10px;
+   background-color: #d6d4d4;
+   border-radius: 10px;
+   transition: all 0.3s ease;
+}
+
+.button:hover {
+   background-color: #fdf9f9;
+}
