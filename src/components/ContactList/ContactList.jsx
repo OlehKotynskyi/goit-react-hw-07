@@ -2,13 +2,20 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts, deleteContact } from '../../redux/contactsAPI';
 import Contact from '../Contact/Contact';
+import {
+   selectFilteredContacts,
+   selectContactsLoading,
+   selectContactsError,
+} from '../../redux/selectors';
 import css from './ContactList.module.css';
 
 const ContactList = () => {
    const dispatch = useDispatch();
-   const { items, loading, error } = useSelector(state => state.contacts);
-   const nameFilter = useSelector(state => state.filters.name.toLowerCase());
+   const filteredContacts = useSelector(selectFilteredContacts);
+   const loading = useSelector(selectContactsLoading);
+   const error = useSelector(selectContactsError);
    const [isDeleting, setIsDeleting] = useState(false);
+
    useEffect(() => {
       dispatch(fetchContacts());
    }, [dispatch]);
@@ -19,9 +26,6 @@ const ContactList = () => {
          setIsDeleting(false);
       });
    };
-   const filteredContacts = items.filter(contact =>
-      contact.name.toLowerCase().includes(nameFilter)
-   );
 
    return (
       <div>
